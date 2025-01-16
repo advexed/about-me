@@ -15,22 +15,22 @@ $maximize-green-icon-active: #003200;
 
 @font-face {
     font-family: "SF Pro Regular";
-    src: url(/resources/fonts/SF-Pro-Text-Regular.otf);
+    src: url(/about-me/resources/fonts/SF-Pro-Text-Regular.otf);
 }
 
 @font-face {
     font-family: "SF Pro Semibold";
-    src: url(/resources/fonts/SF-Pro-Text-Semibold.otf);
+    src: url(/about-me/resources/fonts/SF-Pro-Text-Semibold.otf);
 }
 
 @font-face {
     font-family: "SF Pro Display Regular";
-    src: url(/resources/fonts/SF-Pro-Display-Regular.otf);
+    src: url(/about-me/resources/fonts/SF-Pro-Display-Regular.otf);
 }
 
 @font-face {
     font-family: 'SF Pro Display Semibold';
-    src: url(/resources/fonts/SF-Pro-Display-Semibold.otf);
+    src: url(/about-me/resources/fonts/SF-Pro-Display-Semibold.otf);
 }
 
 * {
@@ -163,7 +163,7 @@ body {
         }
 
         .bg {
-            background-image: url("/resources/img/sequoialight.jpg");
+            background-image: url("/about-me/resources/img/sequoialight.jpg");
         }
 
         .mainwindow {
@@ -329,7 +329,7 @@ body {
         }
 
         .bg {
-            background-image: url("/resources/img/sequoia.png");
+            background-image: url("/about-me/resources/img/sequoia.jpg");
         }
 
         .mainwindow {
@@ -420,7 +420,9 @@ body {
         .topSection {
             background-color: #333;
         }
-
+        .socialContainer {
+            color: #fff;
+        }
         .socialIntro {
             background-color: #333;
 
@@ -467,7 +469,11 @@ body {
 
     height: 100%;
     width: 100%;
-
+    button{
+        border: none;
+        background: none;
+    }
+    
     .notification {
         position: absolute;
         width: 100px;
@@ -535,13 +541,13 @@ body {
     }
 
     .maincontent {
-        width: 100%;
+        width: 800px;
         height: 100%;
     }
 
     .sidebar {
         height: 100%;
-        width: 174px;
+        width: 160px;
         backdrop-filter: blur(40px);
         box-shadow: -2px 0 5px -5px inset #000;
 
@@ -803,12 +809,17 @@ body {
             }
 
 
+            a, button {
+                font-size: inherit;
+                text-decoration: none;
+                color: inherit;
+                    }
             .media {
                 display: flex;
                 flex-direction: row;
                 height: 50px;
                 line-height: 50px;
-
+                padding: 0 5px;
                 img {
                     width: 40px;
                     height: 40px;
@@ -1088,7 +1099,7 @@ body {
 
     .mainbuttons {
         height: 10%;
-        width: 100%;
+        width: 140px;
 
         .focus &,
         &:hover,
@@ -1223,7 +1234,7 @@ body {
     }
 
     .topbar {
-        width: 100%;
+        width: 800px;
         height: 10%;
         margin: 0;
         padding: 0;
@@ -1345,7 +1356,7 @@ body {
         font-family: "SF Pro Semibold";
         margin-left: 6px;
         margin-right: 6px;
-        width: 250px;
+        width: 260px;
         font-size: 16px;
     }
 
@@ -1355,7 +1366,7 @@ body {
 
     .categories {
         margin: 0 auto 0 auto;
-        width: 130px;
+        width: 140px;
         text-align: left;
 
         button {
@@ -1370,7 +1381,7 @@ body {
             padding-right: 0;
             padding-top: 0px;
             padding-bottom: 0;
-            width: 130px;
+            width: 140px;
             border-radius: 5px;
             background: none;
             div{

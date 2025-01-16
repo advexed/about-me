@@ -258,7 +258,7 @@ body {
     box-shadow: -8px 8px 40px -10px #000000, 0 0 0 2px rgba(0, 0, 0, 0.6), 0 0 0 1px #ffffff;
   }
   .desktopContainer .bg {
-    background-image: url("/about-me/resources/img/sequoia.png");
+    background-image: url("/about-me/resources/img/sequoia.jpg");
   }
   .desktopContainer .mainwindow {
     color: #ffffff;
@@ -324,6 +324,9 @@ body {
   .desktopContainer .topSection {
     background-color: #333;
   }
+  .desktopContainer .socialContainer {
+    color: #fff;
+  }
   .desktopContainer .socialIntro {
     background-color: #333;
   }
@@ -357,6 +360,10 @@ body {
   .desktopContainer button.formOpener:active {
     background-color: #5a5a5a;
   }
+}
+.desktopContainer button {
+  border: none;
+  background: none;
 }
 .desktopContainer .notification {
   position: absolute;
@@ -422,12 +429,12 @@ body {
   position: absolute;
 }
 .desktopContainer .maincontent {
-  width: 100%;
+  width: 800px;
   height: 100%;
 }
 .desktopContainer .sidebar {
   height: 100%;
-  width: 174px;
+  width: 160px;
   -webkit-backdrop-filter: blur(40px);
           backdrop-filter: blur(40px);
   box-shadow: -2px 0 5px -5px inset #000;
@@ -636,11 +643,17 @@ body {
 .desktopContainer .pagecontent .socialContainer * {
   cursor: pointer;
 }
+.desktopContainer .pagecontent .socialContainer a, .desktopContainer .pagecontent .socialContainer button {
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+}
 .desktopContainer .pagecontent .socialContainer .media {
   display: flex;
   flex-direction: row;
   height: 50px;
   line-height: 50px;
+  padding: 0 5px;
 }
 .desktopContainer .pagecontent .socialContainer .media img {
   width: 40px;
@@ -883,7 +896,7 @@ body {
 }
 .desktopContainer .mainbuttons {
   height: 10%;
-  width: 100%;
+  width: 140px;
 }
 .focus .desktopContainer .mainbuttons > .button-close, .desktopContainer .mainbuttons:hover > .button-close, .desktopContainer .mainbuttons:active > .button-close {
   background-color: #ff6159;
@@ -972,7 +985,7 @@ body {
   background: #1d9730;
 }
 .desktopContainer .topbar {
-  width: 100%;
+  width: 800px;
   height: 10%;
   margin: 0;
   padding: 0;
@@ -1066,7 +1079,7 @@ body {
   font-family: "SF Pro Semibold";
   margin-left: 6px;
   margin-right: 6px;
-  width: 250px;
+  width: 260px;
   font-size: 16px;
 }
 .desktopContainer #close {
@@ -1074,7 +1087,7 @@ body {
 }
 .desktopContainer .categories {
   margin: 0 auto 0 auto;
-  width: 130px;
+  width: 140px;
   text-align: left;
 }
 .desktopContainer .categories button {
@@ -1089,7 +1102,7 @@ body {
   padding-right: 0;
   padding-top: 0px;
   padding-bottom: 0;
-  width: 130px;
+  width: 140px;
   border-radius: 5px;
   background: none;
 }

@@ -34,89 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mainWindow.style.position = 'absolute';
     mainWindow.style.left = `${left}px`;
     mainWindow.style.top = `${top}px`;
-    document.addEventListener('contextmenu', event => {
-        event.preventDefault();
-    });
-
-
-    let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    function updateContainerDisplay() {
-        const desktopContainer = document.querySelector('.desktopContainer');
-        const mobileContainer = document.querySelector('.mobileContainer');
-        const errorContainer = document.querySelector('.errorContainer');
-        if (window.innerHeight >= 564 && window.innerWidth >= 964) {
-            desktopContainer.style.display = 'flex';
-            mobileContainer.style.display = 'none';
-            errorContainer.style.display = 'none';
-        } else {
-            if (window.innerHeight >= 420 && window.innerWidth >= 320) {
-                desktopContainer.style.display = 'none';
-                errorContainer.style.display = 'none';
-                mobileContainer.style.display = 'flex';
-            } else {
-                desktopContainer.style.display = 'none';
-                errorContainer.style.display = 'flex';
-                mobileContainer.style.display = 'none';
-            }
-        }
-    }
-
-    function addEventListeners(selector, events, callback) {
-        events.forEach(event => {
-            document.querySelector(selector).addEventListener(event, callback);
-        });
-    }
     
-    // Function to load the JSON and populate the pagecontent div at startup
-    async function initializePage() {
-        try {
-            // Fetch the JSON file
-            const response = await fetch('resources/pages.json');
-            const pages = await response.json();
-
-            // Find the "Intro" element in the JSON
-            const introPage = pages.find(item => item.name === 'Intro');
-
-            if (introPage) {
-                // Find the div with the class 'pagecontent'
-                const pageContentDiv = document.querySelector('.pagecontent');
-                // Set the content of the 'pagecontent' div to the "html" of the Intro element
-                pageContentDiv.innerHTML = introPage.html;
-                // Fetch the time on page load
-                fetchTimeUTCPlus1();
-                // Get days until birthday on page load 
-                getDays();
-                // Set an interval to fetch the time every 10 seconds
-                setInterval(fetchTimeUTCPlus1, 10000);
-
-            } else {
-                console.warn('No "Intro" element found in the JSON.');
-                document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                <img src="resources/img/error.jpg">
-                Error loading page: no data for Intro found in JSON.
-            </div>`;
-
-            }
-        } catch (error) {
-            console.error('Error initializing the page:', error);
-            document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                        <img src="resources/img/error.jpg">
-                        Fatal error during JSON load!
-                    </div>`;
-        }
-    }
-
-
-    // Utility function to calculate position from both mouse and touch events
-    function getEventPosition(event) {
-        if (event.touches && event.touches[0]) {
-            return { x: event.touches[0].clientX, y: event.touches[0].clientY };
-        }
-        return { x: event.clientX, y: event.clientY };
-    }
 
     // Start dragging (mouse or touch)
     function startDrag(event) {
@@ -171,8 +89,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+var isDragging = false;
+var offsetX = 0;
+var offsetY = 0;
 var currentPageName = 'Intro'
-var socialListenersExistence = false;
+
+document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+});
+
+function updateContainerDisplay() {
+    const desktopContainer = document.querySelector('.desktopContainer');
+    const mobileContainer = document.querySelector('.mobileContainer');
+    const errorContainer = document.querySelector('.errorContainer');
+    if (window.innerHeight >= 564 && window.innerWidth >= 964) {
+        desktopContainer.style.display = 'flex';
+        mobileContainer.style.display = 'none';
+        errorContainer.style.display = 'none';
+    } else {
+        if (window.innerHeight >= 420 && window.innerWidth >= 320) {
+            desktopContainer.style.display = 'none';
+            errorContainer.style.display = 'none';
+            mobileContainer.style.display = 'flex';
+        } else {
+            desktopContainer.style.display = 'none';
+            errorContainer.style.display = 'flex';
+            mobileContainer.style.display = 'none';
+        }
+    }
+}
+
+// Utility function to calculate position from both mouse and touch events
+function getEventPosition(event) {
+    if (event.touches && event.touches[0]) {
+        return { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }
+    return { x: event.clientX, y: event.clientY };
+}
+
+// Function to load the JSON and populate the pagecontent div at startup
+async function initializePage() {
+    try {
+        // Fetch the JSON file
+        const response = await fetch('/about-me/resources/pages.json');
+        const pages = await response.json();
+
+        // Find the "Intro" element in the JSON
+        const introPage = pages.find(item => item.name === 'Intro');
+
+        if (introPage) {
+            // Find the div with the class 'pagecontent'
+            const pageContentDiv = document.querySelector('.pagecontent');
+            // Set the content of the 'pagecontent' div to the "html" of the Intro element
+            pageContentDiv.innerHTML = introPage.html;
+            // Fetch the time on page load
+            fetchTimeUTCPlus1();
+            // Get days until birthday on page load 
+            getDays();
+            // Set an interval to fetch the time every 10 seconds
+            setInterval(fetchTimeUTCPlus1, 10000);
+
+        } else {
+            console.warn('No "Intro" element found in the JSON.');
+            document.querySelector('.pagecontent').innerHTML = `<div class="loading">
+            <img src="/about-me/resources/img/error.jpg">
+            Error loading page: no data for Intro found in JSON.
+        </div>`;
+
+        }
+    } catch (error) {
+        console.error('Error initializing the page:', error);
+        document.querySelector('.pagecontent').innerHTML = `<div class="loading">
+                    <img src="/about-me/resources/img/error.jpg">
+                    Fatal error during JSON load!
+                </div>`;
+    }
+}
+
+function addEventListeners(selector, events, callback) {
+    events.forEach(event => {
+        document.querySelector(selector).addEventListener(event, callback);
+    });
+}
+
 async function loadPage(pageName) {
     if (pageName === currentPageName) {
         return (1)
@@ -190,15 +189,6 @@ async function loadPage(pageName) {
         currentPageName = pageName;
         // set the title to the content of the button
         document.querySelector('.title').textContent = pageName;
-        // Check if social's event listeners exist, if they do remove them
-        if (socialListenersExistence === true) {
-            document.querySelectorAll('.copyable').forEach(element => {
-                element.removeEventListener('.copyable', ['click']);
-                element.removeEventListener('.copyable', ['touchstart']);
-            })
-            introListenersExistence = false;
-            // console.log("removed");
-        }
         try {
             // Fetch the JSON file
             const response = await fetch('/about-me/resources/pages.json');
@@ -213,88 +203,6 @@ async function loadPage(pageName) {
 
                 // Set the "html" content from the JSON element to the 'pagecontent' div
                 pageContentDiv.innerHTML = page.html;
-
-                //If the loaded page is socials, enable 'copied' notification functionality 
-
-                if (pageName === "Socials") {
-                    const handleEvent = (event) => {
-                        const clickedElement = event.currentTarget;
-
-                        const copyToClipboard = async (text) => {
-                            try {
-                                if (navigator.clipboard && navigator.clipboard.writeText) {
-                                    // Use Clipboard API if available
-                                    await navigator.clipboard.writeText(text);
-                                    console.log("Copied to clipboard:", text);
-
-                                    // Handle success notification
-                                    const notification = document.querySelector('.notification');
-                                    if (notification) {
-                                        notification.classList.add('activated');
-
-                                        // Remove the 'activated' class after 1.5 seconds
-                                        setTimeout(() => {
-                                            notification.classList.remove('activated');
-                                        }, 1500);
-                                    }
-                                } else {
-                                    throw new Error("Clipboard API not supported");
-                                }
-                            } catch (err) {
-                                console.error("Failed to copy text to clipboard:", err);
-
-                                // Handle failure notification
-                                const notificationFail = document.querySelector('.notificationFail');
-                                if (notificationFail) {
-                                    notificationFail.classList.add('activated');
-
-                                    // Remove the 'activated' class after 1.5 seconds
-                                    setTimeout(() => {
-                                        notificationFail.classList.remove('activated');
-                                    }, 1500);
-                                }
-                            }
-                        };
-
-                        if (clickedElement.id === 'discord') {
-                            copyToClipboard("advexed");
-                        } else if (clickedElement.id === 'switch') {
-                            copyToClipboard("SW-1081-1415-2930");
-                        }
-                    };
-                    // Function to handle the event
-                    const handleEvent2 = (event) => {
-                        event.preventDefault();
-                        const clickedElement = event.currentTarget;
-
-                        // Check the ID of the clicked element
-                        if (clickedElement.id === 'gddl') {
-                            window.open("https://gdladder.com/profile/5357", '_blank').focus();
-                        } else if (clickedElement.id === 'tiktok') {
-                            window.open("https://www.tiktok.com/@advexed/", '_blank').focus();
-                        } else if (clickedElement.id === 'gd') {
-                            window.open("https://gdbrowser.com/u/advexed", '_blank').focus();
-                        } else if (clickedElement.id === 'twitter') {
-                            window.open("https://x.com/advexedd", '_blank').focus();
-                        } else if (clickedElement.id === 'youtube') {
-                            window.open("https://www.youtube.com/channel/UCwBZBaq6hdQdbYx9vuvWQyQ", '_blank').focus();
-                        } else if (clickedElement.id === 'lastfm') {
-                            window.open("https://www.last.fm/user/advexed", '_blank').focus();
-                        }
-                    };
-
-                    // Add event listeners to all elements with the class 'clickable'
-                    document.querySelectorAll('.clickable').forEach(element => {
-                        element.addEventListener('click', handleEvent2);
-                        element.addEventListener('touchstart', handleEvent2);
-                    });
-
-                    // Add both click and touchstart event listeners to elements with the 'copyable' class
-                    document.querySelectorAll('.copyable').forEach(element => {
-                        element.addEventListener('click', handleEvent);
-                        element.addEventListener('touchstart', handleEvent);
-                    });
-                }
 
                 // Check if "necessaryFunctions" exists in the JSON element
                 if (page.necessaryFunctions && Array.isArray(page.necessaryFunctions)) {
@@ -315,19 +223,20 @@ async function loadPage(pageName) {
             } else {
                 console.warn('No matching page found in the JSON for:', pageName);
                 document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-            <img src="resources/img/error.png">
+            <img src="/about-me/resources/img/error.png">
             Error loading page: no matching data found in JSON.
         </div>`;
             }
         } catch (error) {
             console.error('Error fetching or processing the JSON file:', error);
             document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                    <img src="resources/img/error.png">
+                    <img src="/about-me/resources/img/error.png">
                     Fatal error during JSON load!
                 </div>`;
         }
     }
 }
+
 // get remaining days until birthday 
 function getDays() {
     if (typeof today !== 'undefined') {
@@ -359,6 +268,7 @@ function getDays() {
         countdownElement.textContent = daysLeft + " days";
     }
 }
+
 // get current time for utc+1
 function fetchTimeUTCPlus1() {
     const now = new Date();
@@ -377,6 +287,43 @@ function fetchTimeUTCPlus1() {
     }
 }
 
-function submitForm (){
+function submitForm() {
     document.querySelector('.blocker').style.display = 'block';
-} 
+}
+
+async function copyText(text) {
+    try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            // Use Clipboard API if available
+            await navigator.clipboard.writeText(text);
+            // Handle success notification
+            const notification = document.querySelector('.notification');
+            if (notification) {
+                notification.classList.add('activated');
+
+                // Remove the 'activated' class after 1.5 seconds
+                setTimeout(() => {
+                    notification.classList.remove('activated');
+                }, 1500);
+                return (0)
+            }
+        } else {
+            throw new Error("Clipboard API not supported");
+        }
+    } catch (err) {
+        console.error("Failed to copy text to clipboard:", err);
+
+        // Handle failure notification
+        const notificationFail = document.querySelector('.notificationFail');
+        if (notificationFail) {
+            notificationFail.classList.add('activated');
+
+            // Remove the 'activated' class after 1.5 seconds
+            setTimeout(() => {
+                notificationFail.classList.remove('activated');
+            }, 1500);
+            return (2)
+        }
+    }
+}
+
