@@ -201,7 +201,7 @@ async function loadPage(pageName) {
         }
         try {
             // Fetch the JSON file
-            const response = await fetch('/resources/pages.json');
+            const response = await fetch('resources/pages.json');
             const pages = await response.json();
 
             // Find the element in the JSON with the same name as the paragraph content
