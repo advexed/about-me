@@ -1,2 +1,2 @@
 # about-me-site
-personal about me website 
+about me website, i haven't yet finished this so please don't judge it too hard lol
