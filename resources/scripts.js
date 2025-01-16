@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function initializePage() {
         try {
             // Fetch the JSON file
-            const response = await fetch('/resources/pages.json');
+            const response = await fetch('resources/pages.json');
             const pages = await response.json();
 
             // Find the "Intro" element in the JSON
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 console.warn('No "Intro" element found in the JSON.');
                 document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                <img src="/resources/img/error.jpg">
+                <img src="resources/img/error.jpg">
                 Error loading page: no data for Intro found in JSON.
             </div>`;
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             console.error('Error initializing the page:', error);
             document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                        <img src="/resources/img/error.jpg">
+                        <img src="resources/img/error.jpg">
                         Fatal error during JSON load!
                     </div>`;
         }
@@ -315,14 +315,14 @@ async function loadPage(pageName) {
             } else {
                 console.warn('No matching page found in the JSON for:', pageName);
                 document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-            <img src="/resources/img/error.png">
+            <img src="resources/img/error.png">
             Error loading page: no matching data found in JSON.
         </div>`;
             }
         } catch (error) {
             console.error('Error fetching or processing the JSON file:', error);
             document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                    <img src="/resources/img/error.png">
+                    <img src="resources/img/error.png">
                     Fatal error during JSON load!
                 </div>`;
         }
