@@ -1,18 +1,18 @@
 @font-face {
   font-family: "SF Pro Regular";
-  src: url(/about-me/resources/fonts/SF-Pro-Text-Regular.otf);
+  src: url(/resources/fonts/SF-Pro-Text-Regular.otf);
 }
 @font-face {
   font-family: "SF Pro Semibold";
-  src: url(/about-me/resources/fonts/SF-Pro-Text-Semibold.otf);
+  src: url(/resources/fonts/SF-Pro-Text-Semibold.otf);
 }
 @font-face {
   font-family: "SF Pro Display Regular";
-  src: url(/about-me/resources/fonts/SF-Pro-Display-Regular.otf);
+  src: url(/resources/fonts/SF-Pro-Display-Regular.otf);
 }
 @font-face {
   font-family: "SF Pro Display Semibold";
-  src: url(/about-me/resources/fonts/SF-Pro-Display-Semibold.otf);
+  src: url(/resources/fonts/SF-Pro-Display-Semibold.otf);
 }
 * {
   font-family: "SF Pro Regular";
@@ -136,7 +136,7 @@ body {
     box-shadow: -8px 8px 40px -10px #000000, 0 0 0 1px #ffffff, 0 0 0 2px rgba(0, 0, 0, 0.0666666667);
   }
   .desktopContainer .bg {
-    background-image: url("/about-me/resources/img/sequoialight.jpg");
+    background-image: url("/resources/img/sequoialight.jpg");
   }
   .desktopContainer .mainwindow {
     box-shadow: -8px 8px 40px -10px #000000, 0 0 0 1px #ffffff, 0 0 0 2px rgba(0, 0, 0, 0.0666666667);
@@ -258,7 +258,7 @@ body {
     box-shadow: -8px 8px 40px -10px #000000, 0 0 0 2px rgba(0, 0, 0, 0.6), 0 0 0 1px #ffffff;
   }
   .desktopContainer .bg {
-    background-image: url("/about-me/resources/img/sequoia.jpg");
+    background-image: url("/resources/img/sequoia.jpg");
   }
   .desktopContainer .mainwindow {
     color: #ffffff;
