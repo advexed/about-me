@@ -131,7 +131,7 @@ function getEventPosition(event) {
 async function initializePage() {
     try {
         // Fetch the JSON file
-        const response = await fetch('/about-me/resources/pages.json');
+        const response = await fetch('/resources/pages.json');
         const pages = await response.json();
 
         // Find the "Intro" element in the JSON
@@ -152,7 +152,7 @@ async function initializePage() {
         } else {
             console.warn('No "Intro" element found in the JSON.');
             document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-            <img src="/about-me/resources/img/error.jpg">
+            <img src="/resources/img/error.jpg">
             Error loading page: no data for Intro found in JSON.
         </div>`;
 
@@ -160,7 +160,7 @@ async function initializePage() {
     } catch (error) {
         console.error('Error initializing the page:', error);
         document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                    <img src="/about-me/resources/img/error.jpg">
+                    <img src="/resources/img/error.jpg">
                     Fatal error during JSON load!
                 </div>`;
     }
@@ -191,7 +191,7 @@ async function loadPage(pageName) {
         document.querySelector('.title').textContent = pageName;
         try {
             // Fetch the JSON file
-            const response = await fetch('/about-me/resources/pages.json');
+            const response = await fetch('/resources/pages.json');
             const pages = await response.json();
 
             // Find the element in the JSON with the same name as the paragraph content
@@ -223,14 +223,14 @@ async function loadPage(pageName) {
             } else {
                 console.warn('No matching page found in the JSON for:', pageName);
                 document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-            <img src="/about-me/resources/img/error.png">
+            <img src="/resources/img/error.png">
             Error loading page: no matching data found in JSON.
         </div>`;
             }
         } catch (error) {
             console.error('Error fetching or processing the JSON file:', error);
             document.querySelector('.pagecontent').innerHTML = `<div class="loading">
-                    <img src="/about-me/resources/img/error.png">
+                    <img src="/resources/img/error.png">
                     Fatal error during JSON load!
                 </div>`;
         }
