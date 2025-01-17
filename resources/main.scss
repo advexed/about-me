@@ -15,22 +15,22 @@ $maximize-green-icon-active: #003200;
 
 @font-face {
     font-family: "SF Pro Regular";
-    src: url(/about-me/resources/fonts/SF-Pro-Text-Regular.otf);
+    src: url(/resources/fonts/SF-Pro-Text-Regular.otf);
 }
 
 @font-face {
     font-family: "SF Pro Semibold";
-    src: url(/about-me/resources/fonts/SF-Pro-Text-Semibold.otf);
+    src: url(/resources/fonts/SF-Pro-Text-Semibold.otf);
 }
 
 @font-face {
     font-family: "SF Pro Display Regular";
-    src: url(/about-me/resources/fonts/SF-Pro-Display-Regular.otf);
+    src: url(/resources/fonts/SF-Pro-Display-Regular.otf);
 }
 
 @font-face {
     font-family: 'SF Pro Display Semibold';
-    src: url(/about-me/resources/fonts/SF-Pro-Display-Semibold.otf);
+    src: url(/resources/fonts/SF-Pro-Display-Semibold.otf);
 }
 
 * {
@@ -163,7 +163,7 @@ body {
         }
 
         .bg {
-            background-image: url("/about-me/resources/img/sequoialight.jpg");
+            background-image: url("/resources/img/sequoialight.jpg");
         }
 
         .mainwindow {
@@ -329,7 +329,7 @@ body {
         }
 
         .bg {
-            background-image: url("/about-me/resources/img/sequoia.jpg");
+            background-image: url("/resources/img/sequoia.jpg");
         }
 
         .mainwindow {
